@@ -1,9 +1,5 @@
-import time
-from refacto_fc import create_actions_list
 from itertools import combinations
 
-url = "data/list_actions.csv"
-action_list = create_actions_list(url, missing_profit=True)
 
 # Geting the highest profit
 def get_profit(actions: list[tuple], budget: float) -> float | None:
@@ -32,7 +28,3 @@ def get_wallet(actions: list, budget: float) -> tuple[list, float]:
                 best_combination = combination
 
     return best_combination, max_profit
-
-t1 = time.time()
-get_wallet(action_list, 500.0)
-print("The time: ", time.time() - t1)

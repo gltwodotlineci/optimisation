@@ -1,8 +1,9 @@
 import csv
 
 def calcul_profit(action: list) -> float:
-    percent = float(action[2][:-1]/100)
-    return action[1] * percent
+    percent = float(action[2][:-1])/100
+    price = action[1]
+    return price * percent
 
 # parsing csv data into list
 def create_actions_list(path:str, missing_profit: bool=True)-> list:
