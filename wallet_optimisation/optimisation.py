@@ -16,12 +16,16 @@ actions_final_lst = prepare_actions(actions)
 actions_nb = len(actions_final_lst)
 
 
-def dynamic_knapsack(actions: list, n: int) -> tuple[list, list]:
+def dynamic_knapsack(actions: list, n: int, big_dt: bool) -> tuple[list, list]:
     # Creating the first row of the table
     tabulation_dyn = [[0.0] * 501 for _ in range(n)]
     # initializint action names table
     action_names = []
     # Filling the table
+    if big_dt:
+        c2 = 2
+    else:
+        c2 = 3
     for i in range(0, n):
         row = []
         action = []
@@ -31,7 +35,7 @@ def dynamic_knapsack(actions: list, n: int) -> tuple[list, list]:
             else:
                 action.append(actions[i])
                 value_action = actions[i][1]
-                profit = actions[i][3]
+                profit = actions[i][c2]
 
                 if value_action <= j:
                     profit_ante = tabulation_dyn[i-1][j]
@@ -61,20 +65,3 @@ def find_wallet(knapsack_tab: list, action_names_lst: list, n: int)-> dict:
         ind_r -= 1
 
     return wallet
-
-
-def results(budget: int, actions: list, actions_nb: int, n: int):
-    t1 = time.time()
-    knapsack_tab, names = dynamic_knapsack(actions, actions_nb)
-    wallet = find_wallet(knapsack_tab, names, actions_nb)
-    best_profit = round(knapsack_tab[n][budget],2)
-    print("<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
-    print(f"The wallet with the best profit is: {list(wallet.values())}")
-    wallet_val = sum([x[1] for x in list(wallet.values())])
-    print(f"The wallet price is: {wallet_val} euros")
-    print("   ")
-    print(f"And it's profit is: {best_profit}")
-    print("<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
-    print("Time execution -> ", time.time() - t1)
-
-results(500, actions_final_lst, actions_nb, len(actions_final_lst)-1)
