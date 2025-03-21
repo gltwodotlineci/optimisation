@@ -5,6 +5,8 @@ url1 = "data/list_actions.csv"
 url2 = "data/list_actions2.csv"
 
 actions1 = create_actions_list(url1, missing_profit=True)
+actions2 = create_actions_list(url2, missing_profit=False)
+
 all_actions = {'actions1': actions1, 'actions2': None}
 
 # Creaing a click regroupment decorator for all the methods
@@ -24,8 +26,7 @@ def launching_brutforce(action: str, budget:float):
     print("Time execution -> ", time.time() - t1)
 
 
-# launching_brutforce(actions1, 500.0)
-
+def launch_optimized()
 
 if __name__ == "__main__":
     cli()
