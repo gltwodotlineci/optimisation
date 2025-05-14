@@ -42,4 +42,3 @@ def compare_lists(lst1: list[int], lst2: list[int]) -> bool:
     return False
 
 max_sublist = brute_force(lg_lst)
-print(max_sublist)
