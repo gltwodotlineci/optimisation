@@ -30,5 +30,3 @@ def optimize_solution(given_lst: list[int]) -> list[int] | int:
             max_r = right
 
     return given_lst[max_l:max_r+1]
-
-print(optimize_solution(lg_lst))
