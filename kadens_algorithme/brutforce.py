@@ -9,7 +9,7 @@ def brute_force(lst: list[int]) -> int | None:
     max_list = []
     for i in range(len(lst)):
         for j in range(1,len(lst)):
-            if lst[i:j] == []:
+            if i == j:
                 continue
 
             if sum(max_list) < sum(lst[i:j]):
